@@ -8,11 +8,9 @@ call neobundle#rc(expand("~/.vim/bundle/"))
 
 NeoBundleFetch "Shougo/neobundle.vim"
 
-NeoBundle "flazz/vim-colorschemes"          " different colorschemes
 NeoBundle "Yggdroot/indentLine"             " indent tab like `|`
 NeoBundle "dockyard/vim-easydir"            " create directory and file from command line (:e path/file, :sp, :vsp - split)
 NeoBundleLazy "xolox/vim-session",          {"autoload":{"commands":["SaveSession", "OpenSession"]}} " manage session
-
 NeoBundle "Shougo/neocomplcache"            " autocomplete
 NeoBundle "terryma/vim-multiple-cursors"    " multiple editing
 NeoBundle "vim-scripts/delimitMate.vim"     " auto close quotes etc.
@@ -103,17 +101,9 @@ autocmd BufRead,BufNewFile *.thor set filetype=ruby
 set clipboard=unnamedplus
 set encoding=utf-8
 set t_Co=256
-colorscheme molokai
 
-hi Normal          ctermfg=248 ctermbg=none
-hi LineNr          ctermfg=23 ctermbg=233
-hi CursorLineNr    ctermfg=16 ctermbg=2 cterm=bold
-
-hi StatusLine      ctermfg=16 ctermbg=23 cterm=bold
-hi StatusLineNC    ctermfg=blue ctermbg=16 cterm=bold
-hi VertSplit       ctermfg=233 ctermbg=16
-
-hi Search          ctermbg=237 ctermfg=3 cterm=none
+" source ~/.vim/scripts/solarized.vim
+source ~/.vim/scripts/molokai.vim
 
 set nobackup
 set nowritebackup
@@ -396,7 +386,6 @@ nmap <silent> <LocalLeader>o :Unite outline<CR>
 " }}} unite
 
 " {{{ airline
-let g:airline_theme = 'dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
@@ -420,9 +409,3 @@ else
   hi clear SpellBad
   hi SpellBad cterm=underline ctermfg=red
 endif
-
-
-" use solarized theme
-"   * require terminal theme too
-"
-" source ~/.vim/scripts/solarized.vim
