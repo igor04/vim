@@ -10,7 +10,6 @@ NeoBundleFetch "Shougo/neobundle.vim"
 
 NeoBundle "Yggdroot/indentLine"             " indent tab like `|`
 NeoBundle "dockyard/vim-easydir"            " create directory and file from command line (:e path/file, :sp, :vsp - split)
-NeoBundleLazy "xolox/vim-session",          {"autoload":{"commands":["SaveSession", "OpenSession"]}} " manage session
 NeoBundle "Shougo/neocomplcache"            " autocomplete
 NeoBundle "terryma/vim-multiple-cursors"    " multiple editing
 NeoBundle "vim-scripts/delimitMate.vim"     " auto close quotes etc.
@@ -24,7 +23,7 @@ NeoBundle "scrooloose/syntastic"            " check program syntax (:SyntasticIn
 NeoBundle "terryma/vim-smooth-scroll"       " pretty scroll
 NeoBundle "tpope/vim-abolish"               " substitute tricks (:%S/{man, dog}/{dog, man}/g) - replace man to dog, dog to man
 NeoBundle "myusuf3/numbers.vim"             " exclued numbers in special window
-NeoBundle "mhinz/vim-startify"
+NeoBundle "mhinz/vim-startify"              " start screen, SLoad, SSave, SDelete session
 
 " RUBY
 NeoBundle "tpope/vim-rails"                 " rails highlights etc.
@@ -56,7 +55,6 @@ NeoBundleLazy "gregsexton/gitv",            {"autoload":{"commands":"Gitv"}}    
 
 
 " SUPPORTING
-NeoBundle "xolox/vim-misc"                  " use session
 NeoBundle "mattn/webapi-vim"                " use gist
 NeoBundle "kana/vim-textobj-user"           " use textobject-rubyblock
 
