@@ -93,7 +93,7 @@ syntax on
 filetype plugin indent on
 
 " autocmd BufWritePost * call system("ctags -R")           " update ctags after each save
-autocmd BufWritePost .vimrc so ~/.vim/.vimrc                    " automatically reload vimrc when it`s saved
+autocmd BufWritePost .vimrc so ~/.vim/vimrc                " automatically reload vimrc when it`s saved
 autocmd FileType ruby setlocal colorcolumn=80              " set (redline) limit for charset in line
 autocmd BufRead,BufNewFile *.md set filetype=markdown      " detect markdown as type of file
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
