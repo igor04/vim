@@ -24,6 +24,7 @@ NeoBundle "terryma/vim-smooth-scroll"       " pretty scroll
 NeoBundle "tpope/vim-abolish"               " substitute tricks (:%S/{man, dog}/{dog, man}/g) - replace man to dog, dog to man
 NeoBundle "myusuf3/numbers.vim"             " exclued numbers in special window
 NeoBundle "mhinz/vim-startify"              " start screen, SLoad, SSave, SDelete session
+NeoBundle "lilydjwg/colorizer"              " highlight rgb color codes :ColorToggle
 
 " RUBY
 NeoBundle "tpope/vim-rails"                 " rails highlights etc.
@@ -62,7 +63,8 @@ NeoBundle "kana/vim-textobj-user"           " use textobject-rubyblock
 NeoBundleLazy "tpope/vim-dispatch",         {"autoload":{"commands":"Dispatch"}}
 NeoBundleLazy "guns/xterm-color-table.vim", {"autoload":{"commands":"XtermColorTable"}}
 NeoBundleLazy "godlygeek/tabular",          {"autoload":{"commands":"Tabularize"}}
-NeoBundleLazy "osyo-manga/vim-over",        {"autoload":{"commands":"OverCommandLine"}}   " :%s with highlight
+NeoBundleLazy "osyo-manga/vim-over",        {"autoload":{"commands":"OverCommandLine"}}       " :%s with highlight
+NeoBundleLazy "KabbAmine/vCoolor.vim",      {"autoload":{"commands":["VCoolor","VCoolIns"]}}  " slect color `r, ra, h`
 
 " UNITE
 NeoBundleLazy "Shougo/unite.vim",           {"autoload":{"commands":"Unite"}}
