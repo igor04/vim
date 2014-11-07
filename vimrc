@@ -102,8 +102,8 @@ set clipboard=unnamedplus
 set encoding=utf-8
 set t_Co=256
 
-" source ~/.vim/scripts/solarized.vim
-source ~/.vim/scripts/molokai.vim
+" source ~/.vim/scripts/molokai.vim
+source ~/.vim/scripts/custom-theme.vim
 
 set nobackup
 set nowritebackup
