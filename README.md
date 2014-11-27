@@ -128,6 +128,8 @@
 
 `:shell` - switch to shell ( `exit`- move back)
 
+`:tab split | b1` - open new tab with buffer #1
+
 ##WINDOW
 
 `C+wo` - keep only active window, closing all others
@@ -301,6 +303,8 @@ replace man to dog and dog to man
 `:>` - add tab
 
 ## Additional
+
+`:set tw=80` and then `gq` will break sentence on line with no more then 80 chars per line
 
 `:ia {keyword} {some text}` - when we type keyword and go out from Insert mode
                               vim replace you keyword to text which you wont see
