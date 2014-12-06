@@ -42,7 +42,11 @@
 
 > 2. `a/i` - data with/without extreme chars
 
-> 3. `w` - word, `p` - paragraph, `s` - sentence, `t` - tag, `[`, `(` or `b`, `{` or `B`, `'` ...
+> 3. `w` - word, `p` - paragraph, `s` - sentence, `t` - tag, `[`, '<', `(` or `b`, `{` or `B`, `'` ...
+
+> - vim-indent-object: `i` - indentation
+
+> - vim-textobj-rubyblock: `r` - ruby block
 
 ##### .(dot) formula - movement + execution
 
