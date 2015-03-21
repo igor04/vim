@@ -4,7 +4,7 @@ if has("vim_starting")
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand("~/.vim/bundle/"))
+call neobundle#begin(expand("~/.vim/bundle/"))
 
 NeoBundleFetch "Shougo/neobundle.vim"
 
@@ -12,12 +12,14 @@ NeoBundle "Yggdroot/indentLine"             " indent tab like `|`
 NeoBundle "dockyard/vim-easydir"            " create directory and file from command line (:e path/file, :sp, :vsp - split)
 NeoBundle "Shougo/neocomplcache"            " autocomplete
 NeoBundle "terryma/vim-multiple-cursors"    " multiple editing
-NeoBundle "vim-scripts/delimitMate.vim"     " auto close quotes etc.
+
+" NeoBundle "vim-scripts/delimitMate.vim"     " auto close quotes etc.
+
 NeoBundle "tpope/vim-endwise"               " auto adding `end` to method
 NeoBundle "tpope/vim-surround"              " working with quotes (cs, ds)
 NeoBundle "vim-scripts/tComment"            " commented code (gcc)
 NeoBundle "vim-scripts/matchit.zip"         " match like %, [{, [m, [( etc.
-NeoBundle "gregsexton/MatchTag"             " match tags like HTML
+NeoBundle "gregsexton/MatchTag"             " match close/open tags HTML
 NeoBundle "msanders/snipmate.vim"           " snippets
 NeoBundle "scrooloose/syntastic"            " check program syntax (:SyntasticInfo)
 NeoBundle "terryma/vim-smooth-scroll"       " pretty scroll
@@ -25,6 +27,7 @@ NeoBundle "tpope/vim-abolish"               " substitute tricks (:%S/{man, dog}/
 NeoBundle "myusuf3/numbers.vim"             " exclued numbers in special window
 NeoBundle "mhinz/vim-startify"              " start screen, SLoad, SSave, SDelete session
 NeoBundle "lilydjwg/colorizer"              " highlight rgb color codes :ColorToggle
+NeoBundle "michaeljsmith/vim-indent-object" " cai, cii
 
 " RUBY
 NeoBundle "tpope/vim-rails"                 " rails highlights etc.
@@ -32,6 +35,11 @@ NeoBundle "vim-ruby/vim-ruby"               " ruby highlights, compilation etc.
 NeoBundle "nelstrom/vim-textobj-rubyblock"  " select ruby block (`vir`, like `vim` - for method)
 NeoBundle "hwartig/vim-seeing-is-believing" " inline eval (F4, F5) - gem install seeing_is_believing
 NeoBundle "lucapette/vim-ruby-doc"          " RR, RB, RS - open browser tab with documentation
+NeoBundle "rorymckinley/vim-rubyhash"       " conver hash: <lead> rt - to str, rs - to symbol, rr - to new style
+
+" OTHER LANG
+NeoBundle "derekwyatt/vim-scala"
+NeoBundle "rust-lang/rust.vim"
 
 " TOOLS
 NeoBundle "epmatsw/ag.vim"                  " search through files (:Ag!) need install - the_silver_searcher
@@ -48,7 +56,7 @@ NeoBundle "jistr/vim-nerdtree-tabs"         " nerdtree in tabs
 NeoBundle "tpope/vim-vinegar"               " open nerdtree in current directoy (press -)
 
 " GIT
-NeoBundle "tpope/vim-fugitive"              " git commands (:Git, :Gdiff) good for merging conflicts
+NeoBundle "tpope/vim-fugitive"              " git commands (:Git, :Gdiff, :Gblame) good for merging conflicts
 NeoBundle "airblade/vim-gitgutter"          " show status for each changed line (<F2>)
 NeoBundleLazy "vim-scripts/vcscommand.vim", {"autoload":{"commands":"VCSDiff"}} " show diff (cd)
 NeoBundleLazy "mattn/gist-vim",             {"autoload":{"commands":"Gist"}}    " posting data to gist (:Gist -p<private> -s<description>)
@@ -81,6 +89,7 @@ NeoBundleLazy "suan/vim-instant-markdown",  {"autoload":{"filetypes":["markdown"
                                             "   $ npm -g install instant-markdown-d
                                             "   $ gem install redcarpet pygments.rb
 
+call neobundle#end()
 NeoBundleCheck
 " }}} NeoBundle
 
@@ -108,6 +117,12 @@ source ~/.vim/scripts/custom-theme.vim
 set nobackup
 set nowritebackup
 set noswapfile
+set history=100
+
+set undofile                                               " save undo's after file closes
+set undodir=~/.vim/undo                                    " where to save undo histories
+set undolevels=1000                                        " how many undos
+set undoreload=10000                                       " number of lines to save for undo
 
 set showcmd                                                " show pressed command in command line
 set showmode                                               " show current mode in command line
@@ -117,6 +132,7 @@ set hidden
 
 set guioptions-=m
 set guioptions-=L
+set guioptions-=r
 set guioptions-=T
 set mousemodel=popup
 set fillchars=vert:\ 
@@ -255,7 +271,7 @@ let mapleader = "\\"
 let maplocalleader = ","
 
 source ~/.vim/scripts/bclose.vim
-source ~/.vim/scripts/change_delete_maps.vim
+source ~/.vim/scripts/change_delete_maps.vim                " could be replaced with wellle/targets.vim
 source ~/.vim/scripts/unmap_arrow_keys.vim
 
 nmap gn :tabnew<CR>

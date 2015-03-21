@@ -6,6 +6,8 @@ let g:airline_theme = 'dark'
 " let g:airline_theme = 'wombat'
 " let g:airline_theme = 'ubaryd'
 
+" colorscheme molokai
+
 hi Pmenu            ctermfg=81    ctermbg=0
 hi PmenuSel                       ctermbg=16
 hi PmenuSbar                      ctermbg=232
@@ -44,3 +46,9 @@ hi VertSplit        ctermfg=233   ctermbg=16      cterm=none
 
 hi Search           ctermfg=3     ctermbg=237     cterm=none
 hi IncSearch        ctermfg=193   ctermbg=16
+hi MatchParen       ctermfg=16    ctermbg=208     cterm=bold
+
+hi DiffAdd          ctermfg=10    ctermbg=234
+hi DiffChange       ctermfg=166   ctermbg=234
+hi DiffDelete       ctermfg=1     ctermbg=234
+hi DiffText         ctermfg=blue  ctermbg=234

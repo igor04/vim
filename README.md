@@ -90,6 +90,8 @@
 
   > `C+u` - delete to start line
 
+  > `C+k` - delete to end line
+
   > `C+i` - tab
 
   > `C+j` - ENTER
