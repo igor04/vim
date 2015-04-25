@@ -56,7 +56,7 @@ NeoBundle "jistr/vim-nerdtree-tabs"         " nerdtree in tabs
 NeoBundle "tpope/vim-vinegar"               " open nerdtree in current directoy (press -)
 
 " GIT
-NeoBundle "tpope/vim-fugitive"              " git commands (:Git, :Gdiff, :Gblame) good for merging conflicts
+NeoBundle "tpope/vim-fugitive"              " git commands (:Git, :Gdiff, Gblame) good for merging conflicts
 NeoBundle "airblade/vim-gitgutter"          " show status for each changed line (<F2>)
 NeoBundleLazy "vim-scripts/vcscommand.vim", {"autoload":{"commands":"VCSDiff"}} " show diff (cd)
 NeoBundleLazy "mattn/gist-vim",             {"autoload":{"commands":"Gist"}}    " posting data to gist (:Gist -p<private> -s<description>)
@@ -145,9 +145,20 @@ augroup CursorLine                                         " cursorline and curs
   " au WinLeave * setlocal nocursorcolumn
 augroup END
 
-if &term =~ "xterm\\|rxvt"                                 " change cursor color
-  let &t_SI = "\<Esc>]12;red\x7"                           " use red cursor in insert mode
-  let &t_EI = "\<Esc>]12;green\x7"                         " use green cursor otherwise
+
+if &term =~ "xterm\\|rxvt"
+
+  " red for insert mode
+  " green otherwise
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;green\x7"
+
+  " 2 - block (1 - blinking)
+  " 4 - underscore (3 - blinking)
+  " 6 - vertical (5 - blinking)
+  let &t_SI .= "\<Esc>[6 q"
+  let &t_EI .= "\<Esc>[2 q"
+
   silent !echo -ne "\033]12;green\007"
   autocmd VimLeave * silent !echo -ne "\033]112\007"
 endif
