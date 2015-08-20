@@ -23,11 +23,16 @@ NeoBundle "gregsexton/MatchTag"             " match close/open tags HTML
 NeoBundle "msanders/snipmate.vim"           " snippets
 NeoBundle "scrooloose/syntastic"            " check program syntax (:SyntasticInfo)
 NeoBundle "terryma/vim-smooth-scroll"       " pretty scroll
-NeoBundle "tpope/vim-abolish"               " substitute tricks (:%S/{man, dog}/{dog, man}/g) - replace man to dog, dog to man
 NeoBundle "myusuf3/numbers.vim"             " exclued numbers in special window
 NeoBundle "mhinz/vim-startify"              " start screen, SLoad, SSave, SDelete session
 NeoBundle "lilydjwg/colorizer"              " highlight rgb color codes :ColorToggle
 NeoBundle "michaeljsmith/vim-indent-object" " cai, cii
+NeoBundle "tpope/vim-abolish"               " substitute tricks (:%S/{man, dog}/{dog, man}/g) - replace man to dog, dog to man
+                                            " crc       - fooBar
+                                            " crm       - FooBar
+                                            " cr_, crs  - foo_bar
+                                            " cru       - FOO_BAR
+                                            " cr-       - foo-bar
 
 " RUBY
 NeoBundle "tpope/vim-rails"                 " rails highlights etc.
@@ -107,6 +112,7 @@ autocmd FileType ruby setlocal colorcolumn=80              " set (redline) limit
 autocmd BufRead,BufNewFile *.md set filetype=markdown      " detect markdown as type of file
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
 
+set shell=/bin/sh                                          " just as fix for some plugins (git gutter)
 set clipboard=unnamedplus
 set encoding=utf-8
 set t_Co=256
@@ -286,12 +292,15 @@ source ~/.vim/scripts/change_delete_maps.vim                " could be replaced 
 source ~/.vim/scripts/unmap_arrow_keys.vim
 
 nmap gn :tabnew<CR>
-nmap <silent><LocalLeader>sc :set spell!<CR>
+nmap <silent><localleader>sc :set spell!<CR>
 nnoremap <F9> :set cursorcolumn!<CR>
 inoremap <C-k> <C-o>:digraphs<CR><C-K>
 
 nnoremap ci: f:lcw
 nnoremap cI: F:lcw
+
+" paste without yanking replaced text
+xnoremap <localleader>p \"_dP
 
 " new line
 

@@ -310,6 +310,8 @@ replace man to dog and dog to man
 
 ## Additional
 
+`ASCII Esc` - insert mode Ctrl+V and Esc
+
 `:set tw=80` and then `gq` will break sentence on line with no more then 80 chars per line
 
 `:ia {keyword} {some text}` - when we type keyword and go out from Insert mode
