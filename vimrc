@@ -15,11 +15,12 @@ NeoBundle "terryma/vim-multiple-cursors"    " multiple editing
 
 " NeoBundle "vim-scripts/delimitMate.vim"     " auto close quotes etc.
 
+NeoBundle "wellle/targets.vim"              " cin(, dinb
 NeoBundle "tpope/vim-endwise"               " auto adding `end` to method
 NeoBundle "tpope/vim-surround"              " working with quotes (cs, ds)
 NeoBundle "vim-scripts/tComment"            " commented code (gcc)
 NeoBundle "vim-scripts/matchit.zip"         " match like %, [{, [m, [( etc.
-NeoBundle "gregsexton/MatchTag"             " match close/open tags HTML
+NeoBundle "Valloric/MatchTagAlways"         " match close/open tags HTML
 NeoBundle "msanders/snipmate.vim"           " snippets
 NeoBundle "scrooloose/syntastic"            " check program syntax (:SyntasticInfo)
 NeoBundle "terryma/vim-smooth-scroll"       " pretty scroll
@@ -28,19 +29,20 @@ NeoBundle "mhinz/vim-startify"              " start screen, SLoad, SSave, SDelet
 NeoBundle "lilydjwg/colorizer"              " highlight rgb color codes :ColorToggle
 NeoBundle "michaeljsmith/vim-indent-object" " cai, cii
 NeoBundle "tpope/vim-abolish"               " substitute tricks (:%S/{man, dog}/{dog, man}/g) - replace man to dog, dog to man
-                                            " crc       - fooBar
-                                            " crm       - FooBar
-                                            " cr_, crs  - foo_bar
-                                            " cru       - FOO_BAR
-                                            " cr-       - foo-bar
+                                            " crc      - fooBar   crm - FooBar   crl - pluralize
+                                            " cr_, crs - foo_bar  cru - FOO_BAR  cr- - foo-bar
 
 " RUBY
-NeoBundle "tpope/vim-rails"                 " rails highlights etc.
 NeoBundle "vim-ruby/vim-ruby"               " ruby highlights, compilation etc.
 NeoBundle "nelstrom/vim-textobj-rubyblock"  " select ruby block (`vir`, like `vim` - for method)
 NeoBundle "hwartig/vim-seeing-is-believing" " inline eval (F4, F5) - gem install seeing_is_believing
 NeoBundle "lucapette/vim-ruby-doc"          " RR, RB, RS - open browser tab with documentation
 NeoBundle "rorymckinley/vim-rubyhash"       " conver hash: <lead> rt - to str, rs - to symbol, rr - to new style
+NeoBundle "tpope/vim-rails"                 " gf        - open file, class, relation under cursor in new buffer (C+wgf - in new tab)
+                                            " :R        - open related file (:Rmodel, :Rview, ..)
+                                            " :[range]Rextract {name} - extract range
+                                            " :Rabbrev  - list abbreviation
+
 
 " OTHER LANG
 NeoBundle "derekwyatt/vim-scala"
@@ -54,6 +56,7 @@ NeoBundle "sjl/gundo.vim"                   " show undo history tree (<F5>)
 NeoBundle "vim-scripts/YankRing.vim"        " show YankRing stack (<F10>)
 NeoBundle "vim-scripts/ragtag.vim"          " C+x: =, + (<%= %>), <space> (div -> <div></div>), / (</div>)
 NeoBundle "igor04/vim-airline"              " airline tabs and status line # else use custome
+NeoBundle "majutsushi/tagbar"
 
 " NERD
 NeoBundle "scrooloose/nerdtree"             " tree
@@ -61,16 +64,17 @@ NeoBundle "jistr/vim-nerdtree-tabs"         " nerdtree in tabs
 NeoBundle "tpope/vim-vinegar"               " open nerdtree in current directoy (press -)
 
 " GIT
-NeoBundle "tpope/vim-fugitive"              " git commands (:Git, :Gdiff, Gblame) good for merging conflicts
+NeoBundle "tpope/vim-fugitive"              " git commands (:Gdiff, :Gblame) good for merging conflicts
 NeoBundle "airblade/vim-gitgutter"          " show status for each changed line (<F2>)
 NeoBundleLazy "vim-scripts/vcscommand.vim", {"autoload":{"commands":"VCSDiff"}} " show diff (cd)
 NeoBundleLazy "mattn/gist-vim",             {"autoload":{"commands":"Gist"}}    " posting data to gist (:Gist -p<private> -s<description>)
-NeoBundleLazy "gregsexton/gitv",            {"autoload":{"commands":"Gitv"}}    " like Gitk
+NeoBundleLazy "gregsexton/gitv",            {"autoload":{"commands":"Gitv"}}    " :Gitv - git log, :Gitv! - log for file
 
 
 " SUPPORTING
 NeoBundle "mattn/webapi-vim"                " use gist
 NeoBundle "kana/vim-textobj-user"           " use textobject-rubyblock
+NeoBundle "tpope/vim-repeat"                " support repeat function for surround, abolish etc.
 
 " LAZY
 NeoBundleLazy "tpope/vim-dispatch",         {"autoload":{"commands":"Dispatch"}}
@@ -288,49 +292,39 @@ let mapleader = "\\"
 let maplocalleader = ","
 
 source ~/.vim/scripts/bclose.vim
-source ~/.vim/scripts/change_delete_maps.vim                " could be replaced with wellle/targets.vim
 source ~/.vim/scripts/unmap_arrow_keys.vim
 
 nmap gn :tabnew<CR>
-nmap <silent><localleader>sc :set spell!<CR>
+nmap <silent><LocalLeader>sc :set spell!<CR>
 nnoremap <F9> :set cursorcolumn!<CR>
 inoremap <C-k> <C-o>:digraphs<CR><C-K>
-
 nnoremap ci: f:lcw
-nnoremap cI: F:lcw
+nmap _ :NERDTreeFind<CR>
 
-" paste without yanking replaced text
-xnoremap <localleader>p \"_dP
+" paste with replace without changing buffer
+xnoremap <LocalLeader>p "_dP
 
 " new line
-
 nnoremap <silent>zj o<Esc>
 nnoremap <silent>zk O<Esc>
 
 " buffer keys
-
 nnoremap <silent><localleader>q :Bclose <CR>
 nnoremap <silent><localleader>p :bd #<CR>
 nnoremap <silent><localleader>l :bn<CR>
 nnoremap <silent><localleader>h :bp<CR>
 
+" change focus
+" map <C-k> <C-w><Up>
+" map <C-j> <C-w><Down>
+" map <C-l> <C-w><Right>
+" map <C-h> <C-w><Left>
+
 " resizing keys
-
-nnoremap <silent><C-k> :res -1<CR>
-nnoremap <silent><C-j> :res +1<CR>
-nnoremap <silent><C-h> :vertical res +1<CR>
-nnoremap <silent><C-l> :vertical res -1<CR>
-
-" arrow keys (move tabs, move lines)
-
-nnoremap <silent><C-Down> :m .+1<CR>==
-nnoremap <silent><C-Up> :m .-2<CR>==
-vnoremap <silent><C-Down> :m '>+1<CR>gv=gv
-vnoremap <silent><C-Up> :m '<-2<CR>gv=gv
-
-nnoremap <silent><C-Left>  :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent><C-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
-
+nnoremap <silent><C-j> :res -1<CR>
+nnoremap <silent><C-k> :res +1<CR>
+nnoremap <silent><C-h> :vertical res +5<CR>
+nnoremap <silent><C-l> :vertical res -5<CR>
 
 " ======================== PLUGINS =========================
 
@@ -445,3 +439,16 @@ else
   hi clear SpellBad
   hi SpellBad cterm=underline ctermfg=red
 endif
+
+let g:startify_custom_header = [
+      \ '       ___________________________           ',
+      \ '      /                           \          ',
+      \ '      |     VIM - Vi IMproved     |          ',
+      \ '      \_________   _______________/          ',
+      \ '                \ / ^__^                     ',
+      \ '                 \\ (oo)\_______             ',
+      \ '                    (__)\       )\/\         ',
+      \ '                        ||----w |            ',
+      \ '                        ||     ||            ',
+      \ '                                             ',
+      \ ]
