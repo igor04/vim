@@ -33,11 +33,18 @@ NeoBundle "tpope/vim-abolish"               " substitute tricks (:%S/{man, dog}/
                                             " cr_, crs - foo_bar  cru - FOO_BAR  cr- - foo-bar
 
 " RUBY
+NeoBundle "thoughtbot/vim-rspec"
+NeoBundle "keith/rspec.vim"
+
 NeoBundle "vim-ruby/vim-ruby"               " ruby highlights, compilation etc.
 NeoBundle "nelstrom/vim-textobj-rubyblock"  " select ruby block (`vir`, like `vim` - for method)
 NeoBundle "hwartig/vim-seeing-is-believing" " inline eval (F4, F5) - gem install seeing_is_believing
 NeoBundle "lucapette/vim-ruby-doc"          " RR, RB, RS - open browser tab with documentation
-NeoBundle "rorymckinley/vim-rubyhash"       " conver hash: <lead> rt - to str, rs - to symbol, rr - to new style
+
+if !has('nvim')
+  NeoBundle "rorymckinley/vim-rubyhash"     " conver hash: <lead> rt - to str, rs - to symbol, rr - to new style
+endif
+
 NeoBundle "tpope/vim-rails"                 " gf        - open file, class, relation under cursor in new buffer (C+wgf - in new tab)
                                             " :R        - open related file (:Rmodel, :Rview, ..)
                                             " :[range]Rextract {name} - extract range
@@ -47,6 +54,7 @@ NeoBundle "tpope/vim-rails"                 " gf        - open file, class, rela
 " OTHER LANG
 NeoBundle "derekwyatt/vim-scala"
 NeoBundle "rust-lang/rust.vim"
+NeoBundle "elixir-lang/vim-elixir"
 
 " TOOLS
 NeoBundle "epmatsw/ag.vim"                  " search through files (:Ag!) need install - the_silver_searcher
@@ -422,7 +430,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#close_symbol = '✗'
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-nnoremap <LocalLeader>t :call airline#extensions#tabline#toggle()<CR>
+nnoremap <LocalLeader>b :call airline#extensions#tabline#toggle()<CR>
 " }}}
 
 " {{{ bufexplorer
@@ -431,6 +439,9 @@ let g:bufExplorerShowRelativePath = 1
 let g:bufExplorerSortBy = 'number'
 " }}} bufexporer
 
+" {{{ throughbot vim-rspec
+map <silent><localleader>t :call RunCurrentSpecFile()<CR>
+" }}} vim-rspec
 
 " ======================= ADDITIONAL =======================
 

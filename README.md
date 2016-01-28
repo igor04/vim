@@ -1,5 +1,13 @@
 ![VIM](http://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Vimlogo.svg/120px-Vimlogo.svg.png)
 
+## NEOVIM
+
+> $ mkdir ~/.config
+
+> $ ln -s ~/.vim ~/.config/nvim
+
+> $ ln -s ~/.vimrc ~/.config/nvim/init.vim
+
 ## NORMAL MODE
 
 > `ga` - show hex and decimal char
@@ -325,3 +333,5 @@ replace man to dog and dog to man
 `[I` - show all places with variable under cursor
 
 `gd` - top var definition
+
+`:bufdo %s/pattern/replace/ge | update`
