@@ -12,8 +12,7 @@ NeoBundle "Yggdroot/indentLine"             " indent tab like `|`
 NeoBundle "dockyard/vim-easydir"            " create directory and file from command line (:e path/file, :sp, :vsp - split)
 NeoBundle "Shougo/neocomplcache"            " autocomplete
 NeoBundle "terryma/vim-multiple-cursors"    " multiple editing
-
-" NeoBundle "vim-scripts/delimitMate.vim"     " auto close quotes etc.
+NeoBundle "vim-scripts/delimitMate.vim"     " auto close quotes etc.
 
 NeoBundle "wellle/targets.vim"              " cin(, dinb
 NeoBundle "tpope/vim-endwise"               " auto adding `end` to method
