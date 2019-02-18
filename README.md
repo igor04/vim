@@ -8,6 +8,8 @@
 
 > $ ln -s ~/.vimrc ~/.config/nvim/init.vim
 
+> $ vim -u <NONE | rcfile> - open vim with defined config
+
 ## NORMAL MODE
 
 > `ga` - show hex and decimal char
@@ -334,4 +336,11 @@ replace man to dog and dog to man
 
 `gd` - top var definition
 
-`:bufdo %s/pattern/replace/ge | update`
+`cgn` - edit current search match with ability go to next,
+        `.` will repeat changes for next search, so we could update with it all matches
+
+`:bufdo %s/replace/replace/ge | update`
+
+  > `:cdo` - go over quickfix list
+
+  > `:argdo` - go over predefined file list (`:arg *` - setup file list)
