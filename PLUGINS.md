@@ -34,7 +34,7 @@
 
 `terryma/vim-smooth-scroll` - pretty scroll
 
-> ```vim
+ ```vim
     nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
     nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
     nnoremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
@@ -51,6 +51,7 @@
 
 `tpope/vim-abolish` - substitute tricks (:%S/{man, dog}/{dog, man}/g) - replace man to dog, dog to man
   > `crc` - fooBar, `crm` - FooBar, `crl` - pluralize
+  
   > `cr_`, `crs` - foo_bar, `cru` - FOO_BAR, `cr-` - foo-bar
 
 `mileszs/ack.vim` - search through files `:Ack!`, or serach files `:AckFile!`
@@ -127,12 +128,16 @@
 
 `tpope/vim-rails`
   > `gf` - open file, class, relation under cursor in new buffer (`C+wgf` - in new tab)
+  
   > `:R` - open related file (`:Rmodel`, `:Rview`, ..)
+  
   > `:[range]Rextract {name}` - extract range
+  
   > `:Rabbrev` - list abbreviation
 
 `hwartig/vim-seeing-is-believing` - inline eval (F4, F5) - `gem install seeing_is_believing`
 
+  ```vim
   nmap <buffer> <LocalLeader>m <Plug>(seeing-is-believing-run)
   xmap <buffer> <LocalLeader>m <Plug>(seeing-is-believing-run)
   imap <buffer> <LocalLeader>m <Plug>(seeing-is-believing-run)
@@ -140,6 +145,7 @@
   nmap <buffer> <LocalLeader>mm <Plug>(seeing-is-believing-mark)
   xmap <buffer> <LocalLeader>mm <Plug>(seeing-is-believing-mark)
   imap <buffer> <LocalLeader>mm <Plug>(seeing-is-believing-mark)
+  ```
 
 #### LANGS
 
@@ -162,10 +168,9 @@
 `hallison/vim-markdown`
 
 `suan/vim-instant-markdown` -  view on `localhost:8090`
-  > let g:instant_markdown_slow = 1
-
-  > requires nodejs xdg-utils
-
-  > $ npm -g install instant-markdown-d
-
-  > $ gem install redcarpet pygments.rb
+  ```
+  let g:instant_markdown_slow = 1
+  requires nodejs xdg-utils
+  $ npm -g install instant-markdown-d
+  $ gem install redcarpet pygments.rb
+  ```
