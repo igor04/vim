@@ -120,7 +120,7 @@
 
 > `C+kl/` - like ł
 
-##VISUAL MODE
+## VISUAL MODE
 
 `o` - jump between ending points selection
 
@@ -130,7 +130,7 @@
 
 `gv` - select previous selection
 
-##COMMAND LINE
+## COMMAND LINE
 
 `C+d` - show complete list
 
@@ -146,7 +146,7 @@
 
 `:tab split | b1` - open new tab with buffer #1
 
-##WINDOW
+## WINDOW
 
 `C+wo` - keep only active window, closing all others
 
@@ -156,7 +156,7 @@
 
 `C+w|` - maximize width
 
-##MARKS
+## MARKS
 
 `''` - last position
 
@@ -184,7 +184,7 @@
 
 `m<LATER>` - set global file mark (after can open this file in other session)
 
-##REGISTERS
+## REGISTERS
 
 > `""` - unnamed register (default vim register)
 
@@ -214,7 +214,7 @@
 
 `:reg "<register>` - show data in register
 
-##MACROS
+## MACROS
 
   > we set macros command in custom register
   > also we can edit macros command like copy and paste to register
@@ -231,7 +231,7 @@
 
 `:argdo normal @a` - exec macro for all file in buff
 
-##REGEXP
+## REGEXP
 
 `\c` and `\C` - ignore case or with case sensitive
 
@@ -249,7 +249,7 @@
 
   >  * `\vSome \zsword\ze` - search patern is `Some word` but active and highlight will be only `word`
 
-##SEARCH
+## SEARCH
 
 `/word/e` - search and set cursor to end of matche text
 
@@ -259,7 +259,7 @@
 
 `:let @/='word'` - set search word directly to register(not set to search history) ;)
 
-##SUBSTITUTION
+## SUBSTITUTION
 
 `:%s//something/` - in this case, search pattern `//` is last initialized search with `/` or `?`
 
@@ -295,7 +295,7 @@ replace man to dog and dog to man
 
 `:%S/{man, dog}/{dog, man}/g` - the same with `abolish`
 
-##GLOBAL COMMAND
+## GLOBAL COMMAND
 
 > `%` - all file
 
