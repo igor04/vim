@@ -1,4 +1,5 @@
 " {{{ Vundle
+
 set nocompatible
 filetype off
 
@@ -27,6 +28,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'mileszs/ack.vim'
 Plugin 'corntrace/bufexplorer'
 Plugin 'sjl/gundo.vim'
+Plugin 'vim-scripts/YankRing.vim'
 Plugin 'guns/xterm-color-table.vim'
 
 Plugin 'kien/ctrlp.vim'
@@ -38,6 +40,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-vinegar'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'mattn/gist-vim'
@@ -286,6 +289,10 @@ nnoremap <silent>]e :lnext<CR>
 nnoremap <silent>[e :lprevious<CR>
 " }}} syntastic
 
+" {{{ YankRing
+nmap <F10> :YRShow<CR>
+" }}} YankRing
+
 " {{{ startify
 let g:startify_custom_header = [
       \ '       ___________________________           ',
@@ -299,7 +306,7 @@ let g:startify_custom_header = [
       \ '                        ||     ||            ',
       \ '                                             ',
       \ ]
-" }}} syntastic
+" }}} startify
 
 " ======================== OTHER =========================
 
