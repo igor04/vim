@@ -2,9 +2,11 @@
 
 ## NEOVIM
 
-> $ git clone --recursive https://github.com/igor04/vim .vim
+> $ git clone --recursive git@github.com:igor04/vim.git ~/.vim
 
 > $ ln -s ~/.vim ~/.config/nvim
+
+> $ vim +BundleInstall +qall
 
 > $ vim -u <NONE | rcfile> - open vim with defined config
 
