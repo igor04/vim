@@ -2,11 +2,9 @@
 
 ## NEOVIM
 
-> $ mkdir ~/.config
+> $ git clone --recursive https://github.com/igor04/vim .vim
 
 > $ ln -s ~/.vim ~/.config/nvim
-
-> $ ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 > $ vim -u <NONE | rcfile> - open vim with defined config
 

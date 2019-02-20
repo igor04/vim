@@ -1,5 +1,3 @@
-NeoBundle "flazz/vim-colorschemes"
-
 let g:airline_theme = 'dark'
 
 colorscheme  molokai

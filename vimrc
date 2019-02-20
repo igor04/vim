@@ -291,6 +291,7 @@ nnoremap <silent>[e :lprevious<CR>
 
 " {{{ YankRing
 nmap <F10> :YRShow<CR>
+let g:yankring_clipboard_monitor=0
 " }}} YankRing
 
 " {{{ startify

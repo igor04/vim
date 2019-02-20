@@ -1,5 +1,3 @@
-NeoBundle "flazz/vim-colorschemes"
-
 let g:airline_theme = 'dark'
 " let g:airline_theme = 'simple'
 " let g:airline_theme = 'laederon'
