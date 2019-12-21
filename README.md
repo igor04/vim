@@ -1,14 +1,12 @@
 ![VIM](http://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Vimlogo.svg/120px-Vimlogo.svg.png)
 
-## NEOVIM
+$ git clone --recursive git@github.com:igor04/vim.git ~/.vim
 
-> $ git clone --recursive git@github.com:igor04/vim.git ~/.vim
+$ ln -s ~/.vim ~/.config/nvim
 
-> $ ln -s ~/.vim ~/.config/nvim
+$ vim +BundleInstall +qall
 
-> $ vim +BundleInstall +qall
-
-> $ vim -u <NONE | rcfile> - open vim with defined config
+$ vim -u <NONE | rcfile> - open vim with defined config
 
 ## NORMAL MODE
 
@@ -30,11 +28,11 @@
 
 > `H, L, M` - move cursor to top, down, middle of the screen
 
-> `[m`, `]m` - go to method definition up/down (`M` to the end of method)
-
-> `[{`, `}]` - go to `{` or `}`
+> `[{`, `}]` - inside `{ }` jumpst to `{` or `}`, the same is true for brackets
 
 > `{`, `}` - move beetween paragraphs
+
+> `C+o`, `C+i` - jumpt by lines on which you previously have been
 
 ##### go to
 

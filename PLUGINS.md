@@ -1,4 +1,9 @@
 ## Pugins
+`tpope/vim-projectionist` - allows configure `:E<subject>` (`:Emodel`, `:Eview` etc)
+  and `:A` - for editing alternative files like specs
+  (`vim-rails` - contains this configuration for rails projects)
+
+`w0rp/ale` - inline linting `[w` - previous, `]w` - next item
 
 `ludovicchabant/vim-gutentags` - autogenerate ctags
 
@@ -24,13 +29,21 @@
 
 `vim-scripts/tComment` - commented code `gcc`
 
-`vim-scripts/matchit.zip` - match like `%`, `[{`, `[m`, `[(` etc.
+`vim-scripts/matchit.zip` - match like `%` or `[{`, `[m`, `[(` etc.
 
 `Valloric/MatchTagAlways` - match close/open tags HTML
 
 `msanders/snipmate.vim` - snippets
 
 `scrooloose/syntastic` - check program syntax `:SyntasticInfo`
+
+  ```vim
+    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_check_on_wq = 0
+    nnoremap <silent>[w :lprevious<CR>
+    nnoremap <silent>]w :lnext<CR>
+  ```
 
 `terryma/vim-smooth-scroll` - pretty scroll
 
@@ -108,7 +121,8 @@
 
   > `tpope/vim-rhubarb`
 
-`airblade/vim-gitgutter` - show status for each changed line `<F2>`
+`airblade/vim-gitgutter` - show status for each changed line `<F2>`,
+  `[c`, `]c` - move between changes
 
 `vim-scripts/vcscommand.vim` - show diff `cd`
 
@@ -132,11 +146,19 @@
 
 `tpope/vim-rails`
   > `gf` - open file, class, relation under cursor in new buffer (`C+wgf` - in new tab)
-  
-  > `:R` - open related file (`:Rmodel`, `:Rview`, ..)
-  
+
+  > `:A` - open alternative file such as spec
+
+  > `:R` - shortcut to open related file to current buffer
+      (instead of `:Eview` in controller it could be done by `:R`)
+
+  > `:Emodel`, `:Eview` without specified name, will open alternative file type to current buffer
+
+  > `:E<type> <name>` - open file with `<name>` for specified `<type>`
+      (ex: `Emodel user`, `:Eview user` - to specify which related file)
+
   > `:[range]Rextract {name}` - extract range
-  
+
   > `:Rabbrev` - list abbreviation
 
 `hwartig/vim-seeing-is-believing` - inline eval (F4, F5) - `gem install seeing_is_believing`

@@ -20,7 +20,6 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/tComment'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'scrooloose/syntastic'
 Plugin 'mhinz/vim-startify'
 Plugin 'lilydjwg/colorizer'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -28,12 +27,11 @@ Plugin 'tpope/vim-repeat'
 Plugin 'mileszs/ack.vim'
 Plugin 'corntrace/bufexplorer'
 Plugin 'sjl/gundo.vim'
-Plugin 'vim-scripts/YankRing.vim'
 Plugin 'guns/xterm-color-table.vim'
-
 Plugin 'kien/ctrlp.vim'
 Plugin 'jasoncodes/ctrlp-modified.vim'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'vim-scripts/YankRing.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -46,6 +44,7 @@ Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'gregsexton/gitv'
+Plugin 'dense-analysis/ale'
 
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'nelstrom/vim-textobj-rubyblock'
@@ -57,7 +56,6 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim'
 Plugin 'hallison/vim-markdown'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'mxw/vim-jsx'
 Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
@@ -70,17 +68,23 @@ call vundle#end()
 syntax on
 filetype plugin indent on
 
-autocmd BufWritePost .vimrc so ~/.vim/vimrc                " automatically reload vimrc when it`s saved
-autocmd FileType ruby setlocal colorcolumn=81              " set (redline) limit for charset in line
-autocmd FileType gitcommit setlocal colorcolumn=72
-autocmd BufRead,BufNewFile *.md set filetype=markdown      " detect markdown as type of file
+" trigger cursor to normal mode on startup
+autocmd VimEnter * silent !echo -ne "\e]12;green\x7"
+autocmd VimEnter * silent !echo -ne '\e[2 q'
+
+autocmd BufRead,BufNewFile *.md   set filetype=markdown
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
 
-" highlight text over limited length
-highlight OverLength ctermfg=1
-autocmd BufEnter *.rb match OverLength /\%82v.*/
+" set column limiter for line length
+hi ColorColumn ctermbg=236
+autocmd FileType ruby       setlocal colorcolumn=81
+autocmd FileType gitcommit  setlocal colorcolumn=72
 
-set shell=/bin/sh                                          " just as fix for some plugins (git gutter)
+" highlight text over limited length
+" hi OverLength ctermbg=236
+" autocmd BufEnter *.rb       match OverLength /\%82v.*/
+
+set shell=/bin/sh
 set clipboard=unnamedplus
 set encoding=utf-8
 set t_Co=256
@@ -93,13 +97,13 @@ set nowritebackup
 set noswapfile
 set history=100
 
-set undofile                                               " save undo's after file closes
-set undodir=$HOME/.vim/undo/                                " where to save undo histories
-set undolevels=1000                                        " how many undos
-set undoreload=10000                                       " number of lines to save for undo
+set undofile
+set undodir=$HOME/.vim/undo/
+set undolevels=1000
+set undoreload=10000
 
-set showcmd                                                " show pressed command in command line
-set showmode                                               " show current mode in command line
+set showcmd
+set showmode
 set fdm=marker
 set number
 set hidden
@@ -162,7 +166,6 @@ set list
 set listchars=tab:▸\ ,eol:¬,trail:·
 nnoremap <F12> :set list!<CR>
 
-
 " ========================== MAP ===========================
 
 let mapleader = "\\"
@@ -173,7 +176,6 @@ source ~/.vim/scripts/unmap_arrow_keys.vim
 
 nmap tn :tabnew<CR>
 nmap <silent><LocalLeader>sc :set spell!<CR>
-nnoremap <F9> :set cursorcolumn!<CR>
 inoremap <C-k> <C-o>:digraphs<CR><C-K>
 nnoremap ci: f:lcw
 nmap _ :NERDTreeFind<CR>
@@ -235,8 +237,11 @@ nmap cd :VCSDiff<CR>
 
 " {{{ GitGutter
 nmap <F2> :GitGutterToggle<CR>
-highlight SignColumn ctermbg=none
-highlight GitGutterChangeDelete ctermfg=blue
+set updatetime=200
+
+hi SignColumn ctermbg=none
+hi GitGutterChangeDelete ctermfg=blue
+
 let g:gitgutter_sign_removed ="▁"
 let g:gitgutter_sign_modified_removed ="≃"
 " }}} GitGutTer
@@ -267,8 +272,13 @@ nmap <silent> <LocalLeader>a :Ack! --ignore-dir={node_modules,vendor} "\b<C-R><C
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#close_symbol = '✗'
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_section_b = ''
+let g:airline_section_y = ''
+let g:airline_section_z = '%L% %4l% ◇ %#__accent_bold#%3v% ›'
 
 nnoremap <LocalLeader>t :call airline#extensions#tabline#toggle()<CR>
 " }}}
@@ -279,15 +289,33 @@ let g:bufExplorerShowRelativePath = 1
 let g:bufExplorerSortBy = 'number'
 " }}} bufexporer
 
-" {{{ syntastic
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_wq = 0
-nnoremap <silent>[s :SyntasticCheck<CR>
-nnoremap <silent>]s :SyntasticReset<CR>
-nnoremap <silent>]e :lnext<CR>
-nnoremap <silent>[e :lprevious<CR>
-" }}} syntastic
+" {{{ ale
+let g:ale_lint_on_enter = 0
+let g:ale_linters_explicit = 1
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '☻'
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'ruby': ['rubocop'],
+\   'typescript': ['prettier'],
+\   'javascript': ['prettier'],
+\}
+let g:ale_linters = {
+\   'ruby': ['rubocop'],
+\   'typescript': ['tslint'],
+\   'javascript': ['eslint'],
+\}
+
+hi ALEErrorSign   ctermfg=160   ctermbg=233  cterm=bold
+hi ALEWarningSign ctermfg=208   ctermbg=233  cterm=bold
+hi SpellCap                     ctermbg=8    cterm=none
+hi SpellBad       ctermfg=0     ctermbg=95
+
+nmap <silent>[w <Plug>(ale_previous_wrap)
+nmap <silent>]w <Plug>(ale_next_wrap)
+nmap <silent><Leader>w <Plug>(ale_fix)
+" }}} ale
 
 " {{{ YankRing
 nmap <F10> :YRShow<CR>
@@ -309,13 +337,12 @@ let g:startify_custom_header = [
       \ ]
 " }}} startify
 
-" ======================== OTHER =========================
+" {{{ vim-gutentags
+let g:gutentags_dont_load = 1
+" let g:gutentags_enabled = 0
+" }}} vim-gutentags
 
-if has("gui_running")
-else
-  hi clear SpellBad
-  hi SpellBad cterm=underline ctermfg=red
-endif
+" ======================== OTHER =========================
 
 " {{{ QuickFixOpenAll
 function! QuickFixOpenAll()

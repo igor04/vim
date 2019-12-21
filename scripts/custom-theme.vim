@@ -17,7 +17,7 @@ hi Question         ctermfg=81
 hi Repeat           ctermfg=161                   cterm=bold
 
 hi VisualNOS                      ctermbg=238     cterm=none
-hi Visual                         ctermbg=235     cterm=none
+hi Visual                         ctermbg=238     cterm=none
 hi WarningMsg       ctermfg=231   ctermbg=238     cterm=bold
 hi WildMenu         ctermfg=81    ctermbg=16
 
@@ -27,16 +27,15 @@ hi Constant         ctermfg=135                   cterm=none
 hi FoldColumn       ctermfg=67    ctermbg=16
 hi Folded           ctermfg=67    ctermbg=16
 
-hi Normal           ctermfg=252   ctermbg=none
+hi Normal           ctermfg=252   ctermbg=234
 hi Comment          ctermfg=59
-hi NonText          ctermfg=250   ctermbg=234
+hi NonText          ctermfg=240   ctermbg=234
 
 hi LineNr           ctermfg=23    ctermbg=233
-hi CursorLineNr     ctermfg=16    ctermbg=2       cterm=bold
+hi CursorLineNr     ctermfg=16    ctermbg=23      cterm=bold
 
 hi CursorLine                     ctermbg=234     cterm=none
 hi CursorColumn                   ctermbg=234     cterm=none
-hi ColorColumn                    ctermbg=1       cterm=bold
 
 hi StatusLine       ctermfg=16    ctermbg=23      cterm=bold
 hi StatusLineNC     ctermfg=blue  ctermbg=16      cterm=bold
